@@ -54,7 +54,7 @@ for mins in (15, 30):
         close_t = ins["time"] + mins * 60
         if time.time() - close_t > 3600:
             continue
-        dt = datetime.fromtimestamp(ins["time"], IST)
+        dt = datetime.fromtimestamp(close_t, IST)  # moment the orders go live
         mod = dt.hour * 60 + dt.minute
         start, end = HOURS[mins]
         inside = ins["high"] <= mc["high"] and ins["low"] >= mc["low"]
